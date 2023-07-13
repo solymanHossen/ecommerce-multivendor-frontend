@@ -1,15 +1,7 @@
-import React, {useEffect, useState} from 'react';
-import {useDispatch, useSelector} from "react-redux";
-import {admin_login,messageClear} from "../../store/reducrs/authReducers";
-import {PropagateLoader} from "react-spinners";
-import toast from "react-hot-toast";
-import {useNavigate} from "react-router-dom";
+import React, {useState} from 'react';
+import {FaFacebook, FaGithub, FaGoogle, FaTwitter} from "react-icons/fa";
 
-const AdminLogin = () => {
-    const dispatch=useDispatch();
-
-    const {loader,errorMessage,successMessage}=useSelector(state=>state.auth)
-
+const Login = () => {
     const [state,setState]=useState({
         email:'',
         password:''
@@ -23,37 +15,14 @@ const AdminLogin = () => {
 
     const  submit=(e)=>{
         e.preventDefault();
-        dispatch(admin_login(state))
+        console.log(state)
     }
-    const overideStyle={
-        display:'flex',
-        margin:'0 auto',
-        height:'24px',
-        justifyContent:'center',
-        alignItems:'center',
-        color:'#fff'
-
-    }
-    useEffect(()=>{
-    if (errorMessage){
-        toast.error(errorMessage)
-        dispatch(messageClear())
-    }
-    if (successMessage){
-        toast.success(successMessage)
-        dispatch(messageClear())
-        navigate('/')
-    }
-    },[errorMessage,successMessage])
-
-    const navigate=useNavigate()
     return (
         <div className="min-w-screen min-h-screen bg-purple-950 flex justify-center items-center">
             <div className="w-[400px] text-gray-200 p-2">
                 <div className="bg-gray-800 p-4 rounded-md shadow-2xl">
-                    <div className="text-center p-3 bg-black text-white mb-5 rounded-lg mt-3 text-2xl">
-                        Admin Login
-                    </div>
+                    <h2 className="text-xl mb-3 text-center"> Welcome to e-commerce</h2>
+                    <p className='text-2xl text-center'>Log in</p>
                     <form onSubmit={submit}>
                         <div className="flex flex-col w-full gap-1 mb-3">
                             <label htmlFor="email">Email</label>
@@ -66,12 +35,27 @@ const AdminLogin = () => {
 
                         <div className="flex flex-row w-full gap-1 mb-3">
 
-                            <button disabled={loader?true :false} className=" px-3 py-2 outline-none border border-slate-600 bg-r]
-                      rounded-md text-yellow-50 bg-indigo-400 focus:border-indigo-700 overflow-hidden w-full">{loader?<PropagateLoader cssOverride={overideStyle} color='#fff'/> :'Login'}</button>
+                            <button  className="px-3 py-2 outline-none border border-slate-600 bg-r]
+                      rounded-md text-yellow-50 bg-indigo-400 focus:border-indigo-700 overflow-hidden w-full">Sign In</button>
                         </div>
 
                     </form>
-
+                    <p> register here</p>
+                    <div className="text-center">or</div>
+                    <div className='w-full flex flex-col gap-3 '>
+                        <div className='bg-purple-600 rounded-lg p-3 w-full flex items-center justify-center'>
+                            <FaGoogle />
+                        </div>
+                        <div className='bg-purple-600 rounded-lg p-3 w-full flex items-center justify-center'>
+                            <FaFacebook />
+                        </div>
+                        <div className='bg-purple-600 rounded-lg p-3 w-full flex items-center justify-center'>
+                            <FaTwitter />
+                        </div>
+                        <div className='bg-purple-600 rounded-lg p-3 w-full flex items-center justify-center'>
+                            <FaGithub/>
+                        </div>
+                    </div>
 
                 </div>
 
@@ -80,4 +64,4 @@ const AdminLogin = () => {
     );
 };
 
-export default AdminLogin;;
+export default Login;
