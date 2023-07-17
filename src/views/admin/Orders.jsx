@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {BsArrowBarDown} from "react-icons/bs";
 import {Link} from "react-router-dom";
+import Pagination from "../Pagination";
 
 const Orders = () => {
     const [currentPage, setCurrentPage] = useState(1)
@@ -42,7 +43,7 @@ const Orders = () => {
                         <div className='py-3 w-[18%]'>55</div>
                         <div className='py-3 w-[18%]'>55</div>
                         <div className='py-3 w-[18%]'> <Link >View</Link></div>
-                        <div className='py-3 w-[8%]'  onClick={()=>setStatus(!status)} ><BsArrowBarDown/></div>
+                        <div className='py-3 w-[8%] cursor-pointer'  onClick={()=>setStatus(!status)} ><BsArrowBarDown/></div>
                     </div>
                 </div>
                 <div className={status ? 'block border-b border-slate-700 bg-slate-600 text-white':'hidden'}>
@@ -56,7 +57,15 @@ const Orders = () => {
                         <div className='py-3 w-[18%]'> <Link >View</Link></div>
                     </div>
                 </div>
-
+             <div className="mt-3 flex justify-end">
+                 <Pagination
+                     pageNumbar={currentPage}
+                     setPageNumber={setCurrentPage}
+                     totalItem={50}
+                     perPage={perPage}
+                     showItem={3}
+                 />
+             </div>
             </div>
         </div>);
 };
