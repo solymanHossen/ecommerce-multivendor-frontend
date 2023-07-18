@@ -1,7 +1,7 @@
 import {AiFillDashboard, AiOutlineShoppingCart} from "react-icons/ai";
 import {BiCategory} from "react-icons/bi";
-import {FiUser} from "react-icons/fi";
-import {BsCurrencyDollar} from "react-icons/bs";
+import {FiUser, FiUsers} from "react-icons/fi";
+import {BsChat, BsCurrencyDollar, BsFillGearFill} from "react-icons/bs";
 
 export  const  allNav=[
     {
@@ -34,5 +34,23 @@ export  const  allNav=[
         icon:<BsCurrencyDollar/>,
         role:'admin',
         path:'/admin/dashboard/payment-request'
+    },{
+        id:6,
+        title:'Deactive Sellers',
+        icon:<FiUsers/>,
+        role:'admin',
+        path:'/admin/dashboard/deactive-sellers'
+    },{
+        id:7,
+        title:'Sellers Request',
+        icon:<BsFillGearFill/>,
+        role:'admin',
+        path:'/admin/dashboard/sellers-request'
+    },{
+        id:8,
+        title:'Chat Seller',
+        icon:<BsChat/>,
+        role:'admin',
+        path:'/admin/dashboard/chat-seller'
     },
 ]
