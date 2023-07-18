@@ -53,7 +53,7 @@ const Sellers = () => {
                                 <td scope='col' className='py-3 px-4 font-medium whitespace-nowrap'>3</td>
                                 <td scope='col' className='py-3 px-4 font-medium whitespace-nowrap'>3</td>
                                 <td scope='col' className='py-3 px-4 font-medium whitespace-nowrap'>
-                                 <Link ><FaEye/></Link>
+                                 <Link to={'/admin/dashboard/seller/details/1'} ><FaEye/></Link>
                                 </td>
                             </tr>
                             </tbody>
