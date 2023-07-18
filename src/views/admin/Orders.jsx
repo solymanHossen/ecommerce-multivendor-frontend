@@ -42,7 +42,7 @@ const Orders = () => {
                         <div className='py-3 w-[13%]'>77</div>
                         <div className='py-3 w-[18%]'>55</div>
                         <div className='py-3 w-[18%]'>55</div>
-                        <div className='py-3 w-[18%]'> <Link >View</Link></div>
+                        <div className='py-3 w-[18%]'> <Link to='/admin/dashboard/order/details/1'>View</Link></div>
                         <div className='py-3 w-[8%] cursor-pointer'  onClick={()=>setStatus(!status)} ><BsArrowBarDown/></div>
                     </div>
                 </div>
