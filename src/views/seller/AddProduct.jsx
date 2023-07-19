@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {BsImage, BsImages} from "react-icons/bs";
 
 const AddProduct = () => {
 
@@ -36,7 +37,41 @@ const AddProduct = () => {
             ...state, [e.target.name]: e.target.value
         })
     }
-    console.log(state)
+
+    const [images,setImages]=useState([])
+    const [imageShow,setImageShow]=useState([])
+    const imgHandle=(e)=>{
+    const files= e.target.files
+        const  length=files.length;
+    if (length > 0){
+        setImages([...images,...files])
+        let imageUrl=[]
+        for (let i=0; i<length; i++){
+            imageUrl.push({url:URL.createObjectURL(files[i])})
+        }
+        setImageShow([...imageShow,...imageUrl])
+    }
+    }
+
+    const changeImage=(img,index)=>{
+
+        if(img){
+
+            console.log('img',img)
+            let tempUrl=imageShow
+            console.log('temp',tempUrl)
+            let tempImages=images
+            console.log(tempImages)
+
+            tempImages[index]=img
+
+            tempUrl[index]={url:URL.createObjectURL(img)}
+            setImageShow([...tempUrl])
+            setImages([...tempImages])
+
+
+        }
+    }
 
     return (<div className='px-2 md:px-7 py-5 rounded'>
 
@@ -67,7 +102,7 @@ const AddProduct = () => {
                             <label className="block text-gray-700 text-sm font-bold mb-2 text-slate-300"
                                    htmlFor="brand">Brand</label>
                             <input
-                                name='brand' onChange={inputHandle} value={state.name}
+                                name='brand' onChange={inputHandle} value={state.brand}
                                 className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 id="brand" type="text" placeholder="Enter brand"/>
                         </div>
@@ -84,9 +119,10 @@ const AddProduct = () => {
                                         readOnly
                                         onClick={() => setCatShow(!catShow)}
                                         value={category}
+
                                         name='stock'
                                         className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                        id="category" type="text" placeholder="Category"/>
+                                        id="category" type="text" placeholder="--select category--"/>
                                 </div>
                                 <div
                                     className={`absolute top-[101%] bg-slate-500 w-full transition-all rounded ${catShow ? 'scale-100' : 'scale-0'}`}>
@@ -103,6 +139,7 @@ const AddProduct = () => {
                                     <div
                                         className='flex justify-start items-start flex-col h-[200px] overflow-x-scroll'>
                                         {allCategory.map((c, i) => <span
+                                            key={i}
                                             className='px-4 py-2 hover:bg-indigo-500 hover:text-white hover:shadow-lg w-full
                                             cursor-pointer'
                                             onClick={() => {
@@ -124,7 +161,7 @@ const AddProduct = () => {
                             <label className="block text-gray-700 text-sm font-bold mb-2 text-slate-300"
                                    htmlFor="stock">Stock</label>
                             <input
-                                onChange={inputHandle} value={state.name}
+                                onChange={inputHandle} value={state.stock}
                                 name='stock'
                                 className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 id="stock" type="number" placeholder="Enter stock"/>
@@ -135,7 +172,7 @@ const AddProduct = () => {
                             <label className="block text-gray-700 text-sm font-bold mb-2 text-slate-300"
                                    htmlFor="price">Price</label>
                             <input
-                                onChange={inputHandle} value={state.name}
+                                onChange={inputHandle} value={state.price}
                                 name='price'
                                 className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 id="price" type="number" placeholder="Enter price"/>
@@ -146,7 +183,7 @@ const AddProduct = () => {
                             <label className="block text-gray-700 text-sm font-bold mb-2 text-slate-300"
                                    htmlFor="discount">Discount</label>
                             <input
-                                onChange={inputHandle} value={state.name}
+                                onChange={inputHandle} value={state.discount}
                                 name='discount'
                                 className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 id="discount" type="number" placeholder="Enter discount"/>
@@ -157,10 +194,26 @@ const AddProduct = () => {
                             <label className="block text-gray-700 text-sm font-bold mb-2 text-slate-300"
                                    htmlFor="description">Description</label>
                             <textarea
-                                onChange={inputHandle} value={state.name}
+                                onChange={inputHandle} value={state.description}
                                 name='description'
                                 className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 id="description" placeholder="Enter description"/>
+                        </div>
+
+                        <div className='grid lg:grid-cols-4  md:grid-cols-3 sm:grid-cols-3 mb-4 text-white w-full'>
+                            {
+                                imageShow.map((image,i)=><div className='h-[180px] relative' key={i}>
+                                    <label htmlFor={i}>
+                                        <img className='h-full w-full rounded' src={image.url} alt=""/>
+                                    </label>
+                                    <input onChange={(e)=>changeImage(e.target.files[0],i)} type="file" id={i} className='hidden'/>
+                                </div>)
+                            }
+                            <label htmlFor="image" className='flex items-center justify-center flex-col h-[144px] cursor-pointer border border-dashed hover:border-indigo-400 w-full text-white'>
+                                <span><BsImages/></span>
+                                <span>select image</span>
+                            </label>
+                            <input multiple className='hidden' type="file" id='image' onChange={imgHandle}/>
                         </div>
                     </div>
 
