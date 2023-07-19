@@ -11,7 +11,7 @@ const SellerDashboard = () => {
         }, {
             name: "Revenue", data: [23, 343, 2, 364, 23, 23, 265, 45, 6, 7, 34, 64]
         }, {
-            name: "Sellers", data: [23, 34, 2, 64, 23, 23, 25, 45, 6, 7, 34, 64]
+            name: "Seles", data: [23, 34, 2, 64, 23, 23, 25, 45, 6, 7, 34, 64]
         },], options: {
             color        : ['#181ee8', '#181ee8'], plotOptions: {
                 radius: 20
@@ -98,7 +98,7 @@ const SellerDashboard = () => {
             <div className='w-full lg:w-5/12 lg:pr-3'>
                 <div className='w-full bg-slate-700 p-4 rounded-md text-white'>
                     <div className='flex justify-between items-center'>
-                        <h2 className='font-semibold text-lg text-white pb-3'> Resent Seller message</h2>
+                        <h2 className='font-semibold text-lg text-white pb-3'> Resent customer message</h2>
                         <Link className='font-semibold text-sm text-white'>View All</Link>
                     </div>
                     <div className='flex flex-col gap-2 pt-6 text-white'>
@@ -110,7 +110,7 @@ const SellerDashboard = () => {
                                 </div>
                                 <div className='p-3 bg-slate-800 rounded-lg border border-slate-600 shadow-sm '>
                                     <div className='flex justify-between items-center mb-3'>
-                                        <Link className='text-md font-normal sm:order-last sm:mb-0'>Admin</Link>
+                                        <Link className='text-md font-normal sm:order-last sm:mb-0'>Customer</Link>
                                         <time className='p-2 text-xs'>4 day age</time>
                                     </div>
                                     <div
@@ -126,7 +126,7 @@ const SellerDashboard = () => {
                                 </div>
                                 <div className='p-3 bg-slate-800 rounded-lg border border-slate-600 shadow-sm '>
                                     <div className='flex justify-between items-center mb-3'>
-                                        <Link className='text-md font-normal sm:order-last sm:mb-0'>Admin</Link>
+                                        <Link className='text-md font-normal sm:order-last sm:mb-0'>Customer</Link>
                                         <time className='p-2 text-xs'>4 day age</time>
                                     </div>
                                     <div
