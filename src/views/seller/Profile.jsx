@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {BsImage} from "react-icons/bs";
 import {FadeLoader} from "react-spinners";
 
 const Profile = () => {
     const image=false
     const loader=true
+    const [editForm,setEditForm]=useState(false)
     return (
         <div>
             <div className="px-2 lg:px-7 py-5">
@@ -36,25 +37,56 @@ const Profile = () => {
                         </div>
 
 
-                        <div className="bg-blue-100 p-4 rounded-lg mb-4">
-                            <p className="font-bold text-xl mb-2">Name</p>
+                        <div className="bg-blue-100 p-4 rounded-lg mb-4 flex items-center justify-between" >
 
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                 className="h-6 w-6 text-blue-500 inline-block mb-1 mr-1" fill="none"
+                            <p className="font-bold text-xl mb-2" >Name</p>
+
+                            <svg
+                                onClick={()=>setEditForm(!editForm)}
+                                xmlns="http://www.w3.org/2000/svg"
+                                 className="h-6 w-6 text-blue-500 inline-block mb-1 mr-1 cursor-pointer" fill="none"
                                  viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                       d="M15 12a3 3 0 11-6 0 3 3 0 016 0zM19 21a2 2 0 01-2 2H7a2 2 0 01-2-2V9a2 2 0 012-2h4l1-2h4l1 2h4a2 2 0 012 2v12zM10 9h4v2h-4V9z"/>
                             </svg>
-                            <span className="text-gray-600">Edit</span>
+
                         </div>
 
+                        {
+                            editForm &&  <div className="bg-gray-800 p-8 rounded-lg w-full transition-all">
+                                <form>
+                                    <div className="mb-4">
+                                        <label htmlFor="shopName" className="text-gray-300 block mb-1">Shop Name</label>
+                                        <input type="text" id="shopName" name="shopName"
+                                               className="w-full bg-gray-700 border-gray-600 border rounded-md px-3 py-2 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                                               placeholder="Enter shop name" required/>
+                                    </div>
+                                    <div className="mb-4">
+                                        <label htmlFor="division" className="text-gray-300 block mb-1">Division</label>
+                                        <input type="text" id="division" name="division"
+                                               className="w-full bg-gray-700 border-gray-600 border rounded-md px-3 py-2 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                                               placeholder="Enter division" required/>
+                                    </div>
+                                    <div className="mb-4">
+                                        <label htmlFor="district" className="text-gray-300 block mb-1">District</label>
+                                        <input type="text" id="district" name="district"
+                                               className="w-full bg-gray-700 border-gray-600 border rounded-md px-3 py-2 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                                               placeholder="Enter district" required/>
+                                    </div>
+                                    <div className="mb-4">
+                                        <label htmlFor="subdistrict"
+                                               className="text-gray-300 block mb-1">Subdistrict</label>
+                                        <input type="text" id="subdistrict" name="subdistrict"
+                                               className="w-full bg-gray-700 border-gray-600 border rounded-md px-3 py-2 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                                               placeholder="Enter subdistrict" required/>
+                                    </div>
+                                    <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded-md">Add
+                                        Product
+                                    </button>
+                                </form>
+                            </div>
+                        }
 
-                        <div className="bg-green-100 p-4 rounded-lg">
-                            <p className="font-bold text-xl mb-2">Email</p>
-                            <p className="text-gray-600">Role</p>
-                            <p className="text-gray-600">Status</p>
-                            <p className="text-gray-600">Payment Account</p>
-                        </div>
                     </div>
 
 
