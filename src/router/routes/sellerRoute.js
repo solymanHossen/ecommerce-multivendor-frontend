@@ -7,6 +7,7 @@ import Orders from "../../views/seller/Orders";
 import PaymentsSeller from "../../views/seller/PaymentsSeller";
 import SellerToCustomer from "../../views/seller/SellerToCustomer";
 import SellerToAdmin from "../../views/seller/SellerToAdmin";
+import Profile from "../../views/seller/Profile";
 
 const Home =lazy(()=>import("../../views/pages/home"))
 
@@ -62,5 +63,11 @@ export const sellerRoutes=[
         element:<SellerToCustomer/>,
         role:'seller',
         ability:['active','deactive','pending']
+    },
+    {
+        path:'/seller/dashboard/profile',
+        element:<Profile/>,
+        role:'seller',
+        status:'active'
     },
 ]
