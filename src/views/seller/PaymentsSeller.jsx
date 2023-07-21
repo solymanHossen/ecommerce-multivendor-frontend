@@ -47,7 +47,7 @@ const PaymentsSeller = () => {
                     </div>
                 </div>
             </div>
-           <div className='grid grid-cols-1 md:grid-cols-2 mt-4 md:mt-0 gap-5'>
+           <div className='grid grid-cols-1 md:grid-cols-2 mt-4  gap-5'>
                <div className="bg-gray-900 text-white rounded-md">
                    <div className="bg-gray-900 rounded-lg shadow-md p-6">
                        <h2 className="text-2xl font-semibold mb-4">Send Request</h2>
